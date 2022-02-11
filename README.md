@@ -1,6 +1,12 @@
 # CSE330-OS
 
+## To create 10 processes
+```
 yitao@yitao-VirtualBox:~/CSE330-OS$ ./start_process_gen.sh 10
+```
+
+## Sample Output
+```
 passwd: password expiry information changed.  
 Please use this UID for testing: 1005  
 cc    -c -o process_generator.o process_generator.c  
@@ -15,3 +21,4 @@ Process-4 Pid 136039
 Process-2 Pid 136041  
 Process-1 Pid 136042  
 Process-3 Pid 136040  
+```
