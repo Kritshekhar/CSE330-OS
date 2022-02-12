@@ -1,4 +1,6 @@
-# CSE330-OS 
+# CSE330: Operating Systems 
+
+Please follow the below steps to test your projects. 
 
 ##  STEP 1: Spawn "N" number of child processes 
   
@@ -38,6 +40,7 @@ Process-3 Pid 136040
     - buff_size - The size of the buffer
     - p - Number of Producer threads
     - c - Numner of Consumer threads
+  - The name of the kernel module **MUST** be "producer_consumer"
 
 
 ```
@@ -52,3 +55,8 @@ make[1]: Leaving directory '/home/cse330/Downloads/linux-5.15.9'
 [165830.148404] CSE330 Project 2 Kernel Module Removed
 Total Elapsed Time from PS Command 0:1:36
 ```
+
+## Note: 
+- Please do not make any changes in provided test code to pass the test cases.
+- You can use print statements in case you want to debug and understand the logic of the test code.
+- Please get in touch with your assigned TA's if your find any bug in the test code.
