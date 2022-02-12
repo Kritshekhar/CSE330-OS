@@ -12,7 +12,5 @@ done
 HR=$(($TIME/3600))
 MIN=$((($TIME-3600*$HR)/60))
 SEC=$((($TIME-3600*$HR)-($MIN*60)))
-
-#echo "Total Time Elapsed $HR:$MIN:$SEC"
 op="$HR:$MIN:$SEC"
 echo "Total Elapsed Time from PS Command $op"
