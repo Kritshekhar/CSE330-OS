@@ -1,11 +1,18 @@
-# CSE330-OS
+# CSE330-OS 
 
-## To create 10 processes
+##  STEP 1: Spawn "N" number of child processes 
+  
+  - Run the script start_process_gen.sh in Terminal-1 
+  - **Input Argument** 
+    - "N" - How many number of process you want to spawn.
+  - The script will create a dummy user account "test_cse330" and spawn N number of child processes for the user.
+  - Take a Note of the UID assigned to the user - "test_cse330"
+
 ```
 yitao@yitao-VirtualBox:~/CSE330-OS$ ./start_process_gen.sh 10
 ```
 
-## Sample Output
+#### Sample Output
 ```
 passwd: password expiry information changed.  
 Please use this UID for testing: 1005  
@@ -22,3 +29,12 @@ Process-2 Pid 136041
 Process-1 Pid 136042  
 Process-3 Pid 136040  
 ```
+
+##  STEP 2: Test your Producer Consumer Kernel Module
+
+  - Run the script test.sh .sh in Terminal-2
+  - **Input Arguments**: 
+    - uid - The UID of the dummy user "test_cse330"
+    - buff_size - The size of the buffer
+    - p - Number of Producer threads
+    - c - Numner of Consumer threads
