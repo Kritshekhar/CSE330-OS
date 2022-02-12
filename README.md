@@ -6,7 +6,7 @@ Please follow the below steps to test your projects.
   
   - Run the script start_process_gen.sh in Terminal-1 
   - **Input Argument** 
-    - "N" - How many number of process you want to spawn.
+    - "N" - How many number of child process you want to spawn.
   - The script will create a dummy user account "test_cse330" and spawn N number of child processes for the user.
   - Take a Note of the UID assigned to the user - "test_cse330"
 
