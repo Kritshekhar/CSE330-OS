@@ -38,6 +38,7 @@ Process-3 Pid 136040
     - buff_size - The size of the buffer
     - p - Number of Producer threads
     - c - Numner of Consumer threads
+  - The name of the kernel module **MUST** be "producer_consumer"
 
 
 ```
