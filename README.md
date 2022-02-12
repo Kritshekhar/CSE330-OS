@@ -9,7 +9,7 @@
   - Take a Note of the UID assigned to the user - "test_cse330"
 
 ```
-yitao@yitao-VirtualBox:~/CSE330-OS$ ./start_process_gen.sh 10
+cse330@cse330:~/CSE330-OS$ ./start_process_gen.sh 10
 ```
 
 #### Sample Output
@@ -38,3 +38,17 @@ Process-3 Pid 136040
     - buff_size - The size of the buffer
     - p - Number of Producer threads
     - c - Numner of Consumer threads
+
+
+```
+cse330@cse330:~/Downloads/CSE330/project_2$ ./test.sh 1005 5 1 1
+make -C /lib/modules/5.15.9KritshekharJha/build/ M=/home/cse330/Downloads/CSE330/project_2 modules
+make[1]: Entering directory '/home/cse330/Downloads/linux-5.15.9'
+make[1]: Leaving directory '/home/cse330/Downloads/linux-5.15.9'
+[165830.147436] [Consumer] Consumed Item#-12 on buffer index:1::PID:136042        Elapsed Time-0:0:8 
+[165830.148373] Producer Thread Received KILL Signal: Producer Stopped. Total # of Items produced:12
+[165830.148391] The total elapsed CPU of UID 1005 is    0:1:36  
+[165830.148393] Consumer Thread Received KILL Signal: Consumer Stopped
+[165830.148404] CSE330 Project 2 Kernel Module Removed
+Total Elapsed Time from PS Command 0:1:36
+```
