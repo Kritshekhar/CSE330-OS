@@ -8,7 +8,7 @@ Please follow the below steps to test your projects.
   - **Input Argument** 
     - "N" - How many number of child process you want to spawn.
   - The script will create a dummy user account "test_cse330" and spawn N number of child processes for the user.
-  - Take a Note of the UID assigned to the user - "test_cse330"
+  - Take a Note of the UID assigned to the user - "test_cse330". In this example UID of the test_cse330 is 1005.
 
 ```
 cse330@cse330:~/CSE330-OS$ ./start_process_gen.sh 10
@@ -36,7 +36,7 @@ Process-3 Pid 136040
 
   - Run the script test.sh .sh in Terminal-2
   - **Input Arguments**: 
-    - uid - The UID of the dummy user "test_cse330"
+    - uid - The UID of the dummy user "test_cse330". In this example the UID is 1005
     - buff_size - The size of the buffer
     - p - Number of Producer threads
     - c - Numner of Consumer threads
