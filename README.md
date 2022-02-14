@@ -48,10 +48,10 @@ cse330@cse330:~/Downloads/CSE330/project_2$ ./test.sh 1005 5 1 1
 make -C /lib/modules/5.15.9KritshekharJha/build/ M=/home/cse330/Downloads/CSE330/project_2 modules
 make[1]: Entering directory '/home/cse330/Downloads/linux-5.15.9'
 make[1]: Leaving directory '/home/cse330/Downloads/linux-5.15.9'
-[165830.147436] [Consumer] Consumed Item#-12 on buffer index:1::PID:136042        Elapsed Time-0:0:8 
+[165830.147436] [Consumer-1] Consumed Item#-12 on buffer index:1 PID:136042        Elapsed Time-0:0:8 
 [165830.148373] Producer Thread Received KILL Signal: Producer Stopped. Total # of Items produced:12
 [165830.148391] The total elapsed time of all processes for UID 1005 is    0:1:36  
-[165830.148393] Consumer Thread Received KILL Signal: Consumer Stopped
+[165830.148393] Consumer Thread Received KILL Signal: Consumer Stopped. Total # of Items consumed:12
 [165830.148404] CSE330 Project 2 Kernel Module Removed
 Total Elapsed Time from PS Command 0:1:36
 ```
