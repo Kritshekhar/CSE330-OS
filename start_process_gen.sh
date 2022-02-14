@@ -7,7 +7,6 @@ home=$(whoami)
 sudo useradd $name
 sudo passwd -d $name
 uid=$(id -u $name)
-echo "Please use this UID for testing:" $uid
 make
-
+echo "Please use this UID for testing:" $uid
 sudo su $name -c ./process_generator

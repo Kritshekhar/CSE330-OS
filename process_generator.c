@@ -19,7 +19,7 @@ void init_process(int nprocesses)
         }
         else if (pid == 0)
         {
-	    printf("Process-%d Pid %d\n", nprocesses, getpid());
+	    printf("UID:%d Process-%d Pid %d\n", getuid(), nprocesses, getpid());
         }
         else if(pid > 0)
         {
