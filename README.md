@@ -15,9 +15,9 @@ bash test.sh < Number of processes to be spawned> < Buffer Size > < Number of Pr
 | :------------- |:-------------:| :-----:|:-----:|
 | 1     | ./test.sh 10 5 1 0 25  | The number of items produced will be equal to the buffer size 5. (3 pts)  <br /> Module should exit without error. (2 pts) | 5|
 | 2     | ./test.sh 10 5 0 1 25  | Consumer should consume nothing (2 pts) <br /> Module should exit without error (3 pts) | 5|
-| 3     | ./test.sh 10 50 1 1 25 | The total number of produced items should be equal to 12 Each process should be produced and consumed only once. (4 pts) <br /> CPU time should match with ps command. (4 pts) <br /> Module should exit without error (2 pts) | 10 |
-| 4     | ./test.sh 100 50 1 1 25 | The total number of produced items should be equal to 102. Each process should be produced and consumed only once. (6 pts) <br /> CPU time should match with ps command. (6 pts)<br /> Module should exit without error (3 pts) | 15 |
-| 5     | ./test.sh 1000 50 1 1 100 | The total number of produced items should be equal to 1002. Each process should be produced and consumed only once. (6 pts). <br /> CPU time should match with ps command. (6 pts) <br /> Module should exit without error (3 pts) | 15 |
+| 3     | ./test.sh 10 50 1 1 25 | The total number of produced items should be equal to 12. Each process should be produced and consumed only once. (4 pts) <br /> CPU time should match with ps command. (4 pts) <br /> Module should exit without error. (2 pts) | 10 |
+| 4     | ./test.sh 100 50 1 1 25 | The total number of produced items should be equal to 102. Each process should be produced and consumed only once. (6 pts) <br /> CPU time should match with ps command. (6 pts)<br /> Module should exit without error. (3 pts) | 15 |
+| 5     | ./test.sh 1000 50 1 1 100 | The total number of produced items should be equal to 1002. Each process should be produced and consumed only once. (6 pts). <br /> CPU time should match with ps command. (6 pts) <br /> Module should exit without error. (3 pts) | 15 |
 
 
 ## Note: 
