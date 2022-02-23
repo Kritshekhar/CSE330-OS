@@ -1,11 +1,9 @@
-src = $(wildcard *.c)
-obj = $(src:.c=.o)
-
-LDFLAGS = -lpthread
-
-process_generator: $(obj)
-	$(CC) -o $@ $^ $(LDFLAGS)
-
-.PHONY: clean
+obj-m = producer_consumer.o
+all:
+	#$(MAKE) -f ./process_gen/Makefile
+	cd process_gen && $(MAKE)
+	make -C /lib/modules/$(shell uname -r)/build/ M=$(PWD) modules
 clean:
-	rm -f $(obj) process_generator
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+	#make -f ./process_gen/Makefile clean
+	cd process_gen && $(MAKE) clean
