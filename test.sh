@@ -1,25 +1,77 @@
 #!/bin/bash
-export num=$1
-echo $num > var
-name="test_cse330"
-home=$(whoami)
-useradd $name
-passwd -d $name
-uid=$(id -u $name)
 make clean
 make
-echo "Test script will start $num processes for the user $uid"
-su $name -c ./process_gen/process_generator &
-sleep 10
-PS_SCRIPT=`bash ps_time.sh $uid &`
-let OUTPUT
-OUTPUT="$PS_SCRIPT";
-echo "Test script will insert the test kernel module"
-insmod producer_consumer.ko buffSize=$2 prod=$3 cons=$4 uuid=$uid &&
-echo "The test script waits 10 seconds for the kernel module to finish"
-sleep 10
-echo "Test script will remove the test kernel module"
-rmmod producer_consumer;
-echo "The following is the dmesg output"
-dmesg | tail -n $5; echo $OUTPUT;
-pkill -u $uid; rm -rf var;
+gcc userspace.c -o userspace
+clear;
+
+free -h;
+echo "---------------------- Test Case: $1 -----------------------------"
+sudo dmesg -c > /dev/null
+
+if [[ $1 -le 2 ]]; then
+
+	./userspace $1 &
+	pid=$!
+
+	echo "Loading the test kernel module ..."
+        sudo insmod memory_manager.ko pid=$pid
+
+	count=1
+	while [ $count -le 3 ]
+	do
+		sleep 10
+		vmRss=( $(sudo cat /proc/$pid/smaps | grep Rss: | awk '{print $2}' | awk '{ SUM += $1} END { print SUM }') )
+		vmSwap=( $(sudo cat /proc/$pid/smaps | grep Swap: | awk '{print $2}' | awk '{ SUM += $1} END { print SUM }') )
+		echo "[TESTSCRIPT] [PID-$pid] Reported [RSS:$vmRss KB] [Swap:$vmSwap KB]"
+		((count++))
+	done
+
+	echo "Removing the test kernel module ..."
+        sudo rmmod memory_manager
+
+	echo "The following is the dmesg output"
+        sudo dmesg | grep $pid
+	echo "----------------------------------------------------------------------------------";
+        echo ""
+else
+	# Swap Test Case
+	scalar=3.5
+	one_gb=1073741824
+	index=1
+	while [ $index -le 3 ]; do
+		mem_size_gb=$(echo "scale=2; ($scalar*$one_gb)/1073741824" | bc)
+
+		echo "---------------------------------------------------------------------";
+		echo "------- SWAP Test Case iteration: $index with Memory Size : $mem_size_gb GB ------"
+		echo "---------------------------------------------------------------------";
+		./userspace $1 $scalar &
+		pid=$!
+
+		echo "Loading the test kernel module ..."
+		sudo insmod memory_manager.ko pid=$pid
+		count=1
+
+		while [ $count -le 3 ]
+		do
+			sleep 10
+			vmRss=( $(sudo cat /proc/$pid/smaps | grep Rss: | awk '{print $2}' | awk '{ SUM += $1} END { print SUM }') )
+			vmSwap=( $(sudo cat /proc/$pid/smaps | grep Swap: | awk '{print $2}' | awk '{ SUM += $1} END { print SUM }') )
+			echo "[TESTSCRIPT] [PID-$pid] Reported [RSS:$vmRss KB] [Swap:$vmSwap KB]"
+			((count++))
+		done
+
+		echo "Removing the test kernel module ..."
+		sudo rmmod memory_manager
+
+		echo "The following is the dmesg output"
+		sudo dmesg | grep $pid
+		echo "----------------------------------------------------------------------------------";
+		echo ""
+		killall userspace
+		((index++))
+		scalar=$(echo "scala=2; $scalar + 0.5" | bc)
+	done
+
+fi
+killall userspace
+rm userspace
